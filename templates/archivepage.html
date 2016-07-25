@@ -1,0 +1,36 @@
+<div id="primary">
+    <div class="inside">
+        $for(posts)$
+        <div class="story">
+            <div class="title"><a href="$url$" rel="bookmark" title="Permanent Link to $title$">$title$</a></div>
+            <div class="opacity08"><small>
+                    <i>$date$ / $tags$</i>
+            </small></div>
+            <br>
+            <p>$teaser$ <span class="read-on">&hellip;</span></p>
+            <a href="$url$">read more &raquo;</a>
+            <br>
+        </div>
+        $endfor$
+
+        <br class="clear">
+        <div class="story twocol-story newer">
+        $if(previousPageNum)$
+        <a href="$previousPageUrl$" class="navigation-link">&laquo; Newer Entries</a>
+        $endif$&nbsp;
+        </div>
+        <div class="story twocol-story older textright">
+        $if(nextPageNum)$
+        <a href="$nextPageUrl$" class="navigation-link">Older Entries &raquo;</a>
+        $endif$&nbsp;
+        </div>
+        <br class="clear">
+    </div>
+</div>
+<hr class="hide">
+
+<div id="secondary">
+    <div class="inside">
+    </div>
+</div>
+<hr class="hide">

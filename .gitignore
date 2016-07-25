@@ -1,0 +1,8 @@
+/_site
+/_cache
+site
+site.o
+site.hi
+/drafts
+/.stack-work
+/templates/default.html
