@@ -29,7 +29,9 @@ make
 make check
 make install
 ```
+
 <!--more-->
+
 
 下面将编译生成jar包，以便在java中使用Protocol Buffers，需确保已安装了maven。
 

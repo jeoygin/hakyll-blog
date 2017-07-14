@@ -32,7 +32,9 @@ tar zxvf Python-2.6.7.tgz
 cd Python-2.6.7
 ./configure --prefix=/usr/local/python2.6
 ```
+
 <!--more-->
+
 
 修改Python的Modules配置：
 

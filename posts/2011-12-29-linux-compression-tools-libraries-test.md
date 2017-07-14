@@ -32,7 +32,9 @@ Compiler：gcc 4.1.2
 ```
 yum install gzip bzip2 xz
 ```
+
 <!--more-->
+
 
 lzop：
 

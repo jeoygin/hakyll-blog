@@ -24,7 +24,9 @@ Hadoop版本：hadoop-0.20.2
 本以为把FileSystem这个类的代码看一遍应该就差不多了，看着看着才发觉FileSystem这个类好庞大、关联依赖的类好多，从下面的类图就可以看出来。虽说类多、方法多，但逻辑相对简单，比较容易理解。
 
 [![](http://lh5.googleusercontent.com/-0fKCkmsgF6w/UAAFk2S5BjI/AAAAAAAAAPE/7a1NVOlX-p8/s1030/FileSystem.png)](https://lh5.googleusercontent.com/-0fKCkmsgF6w/UAAFk2S5BjI/AAAAAAAAAPE/7a1NVOlX-p8/s2061/FileSystem.png "看大图可能需要越过某座墙")
+
 <!--more-->
+
 本文所涉及到的类的包结构如下：
 
 * org.apache.hadoop.fs

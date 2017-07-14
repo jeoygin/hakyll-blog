@@ -11,7 +11,9 @@ date: 2010-05-06 02:58:39
 
 在网上找找翻wall的方法，有提到用EC2(Elastic Compute Cloud)，我就去试了一试，弄了两天(因为要收钱，每天不敢上太久)，终于突破限制，注册了Twitter(@wrjchn)和facebook，以下简单说说怎么玩。
 
+
 <!--more-->
+
 
 按着[GettingStartedGuide](http://docs.amazonwebservices.com/AWSEC2/2008-05-05/GettingStartedGuide/index.html)一步一步做，就能使用EC2和S3服务，要建立证书，配置环境变量，如果在windows上用putty的话，还得将密钥转换成putty支持的密钥格式，挺麻烦的，就不一一说了，想玩的话到官网看看指导，我的英语水平都能看懂，大部人应该没问题的。
 

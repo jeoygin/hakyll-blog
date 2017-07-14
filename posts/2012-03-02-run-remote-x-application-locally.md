@@ -26,7 +26,9 @@ X-Window不是C/S架构吗？突发奇想，如果让远端运行的程序显示
 1. 通知本地display（X server）接收远程计算的连接
 2. 通知远程应用（X client）将输出定向到本地display
 
+
 <!--more-->
+
 
 ## X Window小常识 ##
 

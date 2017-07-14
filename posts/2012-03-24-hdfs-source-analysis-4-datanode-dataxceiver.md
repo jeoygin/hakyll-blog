@@ -31,7 +31,9 @@ Hadoop版本：hadoop-0.20.2
 以下是DataXceiver相关的类图：
 
 ![](http://lh4.googleusercontent.com/-DwaU7IjrspM/T2xPpQ9WscI/AAAAAAAAAMw/G1hU7rXlFzY/s1047/DatanodeDataXceiver.jpg)
+
 <!--more-->
+
 ## DataXceiver ##
 
 在datanode上由DataXceiver来负责数据的接收与发送，我们先来看DataXceiverServer和DataXceiver这两个类。

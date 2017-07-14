@@ -51,7 +51,9 @@ date: 2012-07-04 15:10:21
             * struct gendisk *alloc_disk(int minors);
             * void del_gendisk(struct gendisk *gd);
             * void add_disk(struct gendisk *gd);
+
 <!--more-->
+
 * 块设备操作
     * open和release函数
         * 对于那些操作实际硬件设备的驱动程序，open和release函数可以设置驱动程序和硬件的状态。这些操作包括使磁盘开始或者停止旋转，锁住可移动介质的仓门以及分配DMA缓存等

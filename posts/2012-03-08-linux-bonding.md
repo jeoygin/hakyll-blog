@@ -18,7 +18,9 @@ Linux网卡绑定的实现就是使用多块网卡虚拟成为一块网卡，这
 ## 配置 ##
 
 网卡绑定的配置见[网络链路聚合测试](http://jeoygin.org/2012/03/03/link-aggregation-test/)。
+
 <!--more-->
+
 ## 加载bonding模块 ##
 
 加载bonding模块有两种做法：

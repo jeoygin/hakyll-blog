@@ -38,7 +38,9 @@ date: 2012-06-15 18:18:02
     * module_init和module_exit
     * MODULE_LICENSE
 
+
 <!--more-->
+
 
 * 核心模块与应用程序的对比
     * 模块预先注册自己以便服务于将来的某个请求

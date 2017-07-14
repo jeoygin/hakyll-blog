@@ -16,7 +16,9 @@ date: 2010-08-27 07:17:41
 STOP: 0x0000007B (0xF741B84C,0xC0000034,0x00000000,0x00000000)
 INACCESSIBLE_BOOT_DEVICE
 ```
+
 <!--more-->
+
 
 在网上看到一篇文章《[Converting a VMWare image to Xen HVM](http://ian.blenke.com/vmware/vmdk/xen/hvm/qemu)》，按照作者所说的做，解决了问题，在此与大家分享这个解决方法。
 

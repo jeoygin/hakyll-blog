@@ -31,7 +31,9 @@ int main(){
 
 如果要让程序休眠3秒，Windows使用Sleep(3000)，Linux使用sleep(3)，即Windows的Sleep接口的参数的单位是毫秒，Linux的sleep接口的参数的单位是秒。
 
+
 <!--more-->
+
 
 如果需要精确到毫秒，以上程序就发挥不了作用，如果在Java要达到这要求就很简单了，代码如下所示：
 

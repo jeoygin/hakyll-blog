@@ -25,7 +25,9 @@ date: 2011-09-08 00:08:04
 ```
 apt-get install g++ perl python python-dev python-setuptools python-imaging libxslt-dev
 ```
+
 <!--more-->
+
 
 安装mwlib及可用的writer
 

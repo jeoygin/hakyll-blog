@@ -33,7 +33,9 @@ mvn clean install -DskipTests
 * avro-tools-1.7.7.jar位于avro-src-1.7.7/lang/java/tools/target/
 * avro-ipc-1.7.7.jar位于avro-src-1.7.7/lang/java/ipc/target/
 
+
 <!--more-->
+
 
 **2.消息结构与服务接口**
 

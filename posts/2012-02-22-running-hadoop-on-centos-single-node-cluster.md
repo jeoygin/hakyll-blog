@@ -28,7 +28,9 @@ JDK将安装在/usr/lib/jvm/java-1.6.0-openjdk.x86_64
 # useradd -g hadoop
 ```
 
+
 <!--more-->
+
 
 ## 配置SSH ##
 

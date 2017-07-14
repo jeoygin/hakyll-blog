@@ -46,7 +46,9 @@ date: 2012-06-21 20:42:50
         * &lt;linux/timex.h&gt;
             * cycles_t get_cycles(void);
         * \#define rdtscl(dest) __asm__ __volatile__("mfs0 %0,$9; nop" : "=r" (dest))
+
 <!--more-->
+
 * 获取当前时间
     * 内核提供将墙钟时间转换为jiffies值的函数
     * &lt;linux/time.h&gt;

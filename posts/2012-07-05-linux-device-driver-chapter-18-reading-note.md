@@ -44,7 +44,9 @@ date: 2012-07-05 19:00:34
             * tcflag_t c_cflag;
             * tcflag_c c_lflag;
             * cc_t c_line;
+
 <!--more-->
+
 * tty_driver函数指针
     * open和close
         * 当用户使用open打开由驱动程序分配的设备节点时，tty核心将调用open函数

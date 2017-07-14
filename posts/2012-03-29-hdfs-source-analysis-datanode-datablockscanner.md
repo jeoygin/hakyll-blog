@@ -22,7 +22,9 @@ Hadoop版本：hadoop-0.20.2
 DataBlockScanner是datanode上很重要的部分，用于周期性地对块文件进行校验，当客户端读取整个块时，也会通知DataBlockScanner校验结果。这个类位于包org.apache.hadoop.hdfs.server.datanode中，与DataBlockScanner相关的类图如下所示：
 
 ![](http://lh3.googleusercontent.com/-_MMtjdUyAvQ/T3QScRxVatI/AAAAAAAAANg/TbHDOD1Xbic/s851/DatanodeDataBlockScanner.jpg)
+
 <!--more-->
+
 ## 相关参数 ##
 
 **与扫描相关的参数有：**

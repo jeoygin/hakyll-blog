@@ -23,7 +23,9 @@ Hadoop版本：hadoop-0.20.2
 datanode在启动后，会定期向namenode发送心跳报告，并处理namenode返回的命令，经过前面的分析，已经基本弄清楚datanode相关的类，本文将分三部分对剩下的Datanode这个类进行分析，分别是datanode的启动、公共接口和运行。Datanode位于org.apache.hadoop.hdfs.server.datanode这个包，类图如下所示：
 
 ![](http://lh6.googleusercontent.com/-FN08G720B1c/T3WbExutqWI/AAAAAAAAAN0/jG871Qf2Fcc/s852/Datanode.jpg)
+
 <!--more-->
+
 ## datanode的启动 ##
 
 首先，先看看Datanode的静态初始化块：

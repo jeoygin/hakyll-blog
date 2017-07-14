@@ -41,7 +41,9 @@ datanode的存储结构如下所示：
 ```
 
 datanode的存储大体上可以分为两部分：与Storage相关的类从宏观上刻画了每个存储目录的组织结构，管理由HDFS属性dfs.data.dir指定的目录，如current、previous、detach、tmp、storage等目录和文件，并定义了对整个存储的相关操作；与Dataset相关的类描述了块文件及其元数据文件的组织方式，如current目录中的文件组织结构，以及对块文件的相关操作。因为namenode也会用到Storage，而namenode并不存储块文件，因而将存储分成这两部分。
+
 <!--more-->
+
 本文中将简单分析这两部分内容，所涉及到的类的包结构如下所示：
 
 * org.apache.hadoop.hdfs.protocol

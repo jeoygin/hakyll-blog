@@ -16,7 +16,9 @@ iozone（[www.iozone.org](http://www.iozone.org))是一个文件系统的benchma
 
 可以测试 Read, write, re-read,re-write, read backwards, read strided, fread, fwrite, random read, pread,mmap, aio_read, aio_write 等等不同的模式下的硬盘的性能。
 
+
 <!--more-->
+
 
 测试参数： -i # 用来指定测试内容.
 

@@ -60,7 +60,9 @@ date: 2012-06-19 16:09:45
         * void downgrade_write(struct rw_semaphore *sem);
         * 最好在很少需要写访问且写入者只会短期拥有信号量的时候使用rwsem
 
+
 <!--more-->
+
 
 * completion
     * 内核编程中常见的一种模式是，在当前线程之外初始化某个活动，然后等待该活动的结束

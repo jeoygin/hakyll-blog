@@ -27,7 +27,9 @@ DFSInputStream的主要功能是向namenode获取块信息，并且从datanode�
 先来看看类图，从总体上把握类之间的关系，由于类比较多，所以略去了不少类，只剩下一些重要的类，因此下面的类图并不完整：
 
 [![看大图可能需要越过某座墙](http://lh3.googleusercontent.com/-BHKBJT4Ed4A/UBJFqsjWjtI/AAAAAAAAAQM/jPg-mI7kvTw/s725/DFSInputStream.png)](https://lh3.googleusercontent.com/-BHKBJT4Ed4A/UBJFqsjWjtI/AAAAAAAAAQM/jPg-mI7kvTw/s1450/DFSInputStream.png "看大图可能需要越过某座墙")
+
 <!--more-->
+
 DataChecksum这个类的说明可见[HDFS源码分析（5）：datanode数据块的读与写](http://jeoygin.org/2012/03/hdfs-source-analysis-datanode-block-read-write.html)。
 
 **1\. FSInputChecker**

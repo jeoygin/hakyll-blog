@@ -27,7 +27,9 @@ Hadoop自带了几个基准测试，被打包在几个jar包中，如hadoop-*tes
 使用以下命令就可以调用jar包中的类：
 
     $ hadoop jar $HADOOP_HOME/xxx.jar
+
 <!--more-->
+
 
 **(1). Hadoop Test**
 

@@ -21,7 +21,9 @@ tags:
 
 2. php本身不是Unicode的，所有substr之类的函数得改成mb_substr（需要装mbstring扩展）；或者用iconv转码。
 
+
 <!--more-->
+
 
 **二.PHP与Mysql的数据交互**
 

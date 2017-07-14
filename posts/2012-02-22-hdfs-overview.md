@@ -14,7 +14,9 @@ date: 2012-02-22 11:09:32
 
 当datanode加入集群后，每隔一段时间会向namenode发送心跳，namenode会返回一些命令，比如发送块到另一datanode、删除或恢复块等。namenode与datanode是服务端/客户端结构，datanode通过RPC来向namenode发送请求；而datanode之间是对等结构，相互之间可以通过socket来进行通信、发送数据。
 
+
 <!--more-->
+
 
 以下将简单介绍namenode和datanode的存储目录结构。
 

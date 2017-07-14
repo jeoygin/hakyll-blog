@@ -34,7 +34,9 @@ mvn package
 
 安装成功后，将会在msgpack/msgpack/java/target目录中生成msgpack-0.*.*-devel.jar，会在msgpack/msgpack-rpc/java/target目录中生成msgpack-rpc-0.*.*-devel.jar
 
+
 <!--more-->
+
 
 **2.消息结构与服务接口**
 

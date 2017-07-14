@@ -30,7 +30,9 @@ JDK：java-1.6.0-openjdk.x86_64
 
 测试数据与测试Linux压缩工具的数据一样，/opt/test.tar，大小为1.1GB。
 
+
 <!--more-->
+
 
 ## 压缩程序代码 ##
 

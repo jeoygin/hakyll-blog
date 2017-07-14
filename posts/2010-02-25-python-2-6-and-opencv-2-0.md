@@ -14,7 +14,9 @@ date: 2010-02-25 17:04:54
 
 在网上找了一些资料，说是在命令行(cmd)先进入OpenCVinterfacesswigpython目录，然后执行python setup-for-win.py install，之后会生成python源文件和库，有__init__.py、_cv.pyd、_highgui.pyd、_ml.pyd、adaptors.py、cv.py、highgui.py、matlab_syntax.py、ml.py。如果成功会在、Python26Libsite-packages下建立opencv目录，并将生成的文件拷贝到其中，否则会提示错误信息。但我执行python setup-for-win.py install命令后出现了如下错误：
 
+
 <!--more-->
+
 
 ![](http://lh4.ggpht.com/_Npc6IElQ2gU/S-ls3Qit9FI/AAAAAAAAAFg/MMZG4DVOx_c/python_opencv.jpg)
 

@@ -76,7 +76,9 @@ date: 2012-07-02 16:49:34
                 * void subsystem_unregister(struct subsystem *subsys);
                 * struct subsystem *subsys_get(struct subsystem *subsys);
                 * void subsys_put(struct subsystem *subsys);
+
 <!--more-->
+
 * 低层sysfs操作
     * kobject是隐藏在sysfs虚拟文件系统后的机制，对于sysfs中的每个目录，内核中都会存在一个对应的kobject
     * &lt;linux/sysfs.h&gt;

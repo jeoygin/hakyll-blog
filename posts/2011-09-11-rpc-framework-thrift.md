@@ -37,7 +37,9 @@ ant
 
 安装后，libthrift-0.6.1-snapshot.jar位于thrift-0.6.1/lib/java/build目录
 
+
 <!--more-->
+
 
 **2.消息结构与服务接口**
 

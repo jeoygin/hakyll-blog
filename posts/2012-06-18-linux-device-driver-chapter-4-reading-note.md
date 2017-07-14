@@ -31,7 +31,9 @@ date: 2012-06-18 17:22:13
     * CONFIG_INPUT_EVBUG
     * CONFIG_PROFILING
 
+
 <!--more-->
+
 
 * 通过打印调试
     * printk

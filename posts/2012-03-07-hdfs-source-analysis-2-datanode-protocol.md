@@ -33,7 +33,9 @@ datanode协议包括基本的数据结构、调用接口以及通信的内容，
 ** DatanodeRegistration
 ** InterDatanodeProtocol
 ** UpgradeCommand
+
 <!--more-->
+
 ## 数据结构 ##
 
 datanode涉及的数据结构包括datanode信息、块、块元数据、datanode命令等，这些结构均实现Writable接口，可进行序列化。

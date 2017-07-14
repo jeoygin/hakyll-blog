@@ -28,7 +28,9 @@ DistributedFileSystem是用于DFS系统的抽象文件系统的实现，继承�
 我们先来看看与DistributedFileSystem相关的类图，由于涉及到的类繁多，因此只列出关键类的属性和方法，其它的类只有类名：
 
 [![看大图可能需要越过某座墙](http://lh5.googleusercontent.com/-AosFT9wPrLY/UA50ENPS7iI/AAAAAAAAAPw/PFh34RPMFYQ/s1115/DistributedFileSystem.png)](https://lh5.googleusercontent.com/-AosFT9wPrLY/UA50ENPS7iI/AAAAAAAAAPw/PFh34RPMFYQ/s1115/DistributedFileSystem.png "看大图可能需要越过某座墙")
+
 <!--more-->
+
 从上图可以看出依赖或关联的类基本是HDFS中通用的类和org.apache.hadoop.fs包下的与文件系统相关的类，DistributedFileSystem的大部分方法会调用DFSClien对应的方法，待下方分析DFSClient时再进行介绍。
 
 先来看看类的初始，在静态初始化块中加载了hdfs-default.xml和hdfs-site.xml配置文件，其中包含了namenode的信息以及一些与HDFS相关的参数；在初始化对象时，从uri中得到namenode地址，设置默认工作目录为用户目录。

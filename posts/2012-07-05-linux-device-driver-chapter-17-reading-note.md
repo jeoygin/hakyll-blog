@@ -54,7 +54,9 @@ date: 2012-07-05 18:56:46
     * 模块的卸载
         * unregister_netdev函数从系统中删除接口
         * free_netdev函数将net_device结构返回给系统
+
 <!--more-->
+
 * net_device结构细节
     * 全局信息
         * char name[IFNAMSIZ];

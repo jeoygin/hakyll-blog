@@ -36,7 +36,9 @@ sudo cp /etc/hosts chroot/etc/hosts
 sudo cp /etc/resolv.conf chroot/etc/resolv.conf
 sudo cp /etc/apt/sources.list chroot/etc/apt/sources.list
 ```
+
 <!--more-->
+
 
 进入chroot
 

@@ -42,7 +42,9 @@ rrdtool在源上没有，只能在官网上下载，然后安装。
  rpm -ivh rrdtool-1.4.5-1.el5.wrl.x86_64.rpm rrdtool-devel-1.4.5-1.el5.wrl.x86_64.rpm rrdtool-perl-1.4.5-1.el5.wrl.x86_64.rpm
 ```
 
+
 <!--more-->
+
 
 ## 编译、安装源码 ##
 

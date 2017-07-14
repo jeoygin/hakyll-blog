@@ -110,7 +110,9 @@ date: 2012-07-03 17:40:07
         * &lt;linux/sched.h&gt;
             * struct mm_struct
         * current-&gt;mm
+
 <!--more-->
+
 * mmap设备操作
     * 内存映射可以提供给用户程序直接访问设备内存的能力
     * 映射一个设备意味着将用户空间的一段内存与设备内存关联起来
