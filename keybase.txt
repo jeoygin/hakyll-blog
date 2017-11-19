@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/jeoygin
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://jeoygin.org
+  * I am jeoygin (https://keybase.io/jeoygin) on keybase.
+  * I have a public key ASCfRFd8XGwy7OrzBudC21Q_EriayIezSmwn3-WXReMWEQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01209f44577c5c6c32eceaf306e742db543f12b89ac887b34a6c27dfe59745e316110a",
+      "host": "keybase.io",
+      "kid": "01209f44577c5c6c32eceaf306e742db543f12b89ac887b34a6c27dfe59745e316110a",
+      "uid": "6390d5368548682773db87bd0a0b6a19",
+      "username": "jeoygin"
+    },
+    "merkle_root": {
+      "ctime": 1511075842,
+      "hash": "aab976bedc26f76b5e035949a607a5a3d5b09321fb09db91483c321c66ec1e76469346fba462634e9a493d531c7f042eb8210c4865aedd8ad811155a3e46d1f7",
+      "hash_meta": "b17b5f5358ba50177dd822a0130a4de7772485cae7f9ead1adeea43d48e7ad1b",
+      "seqno": 1719320
+    },
+    "service": {
+      "hostname": "jeoygin.org",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.34"
+  },
+  "ctime": 1511075876,
+  "expire_in": 504576000,
+  "prev": "537836e5afae311eaceb82afaa99d4c6c0d3025d5fb4223e9a2cad0321ee3637",
+  "seqno": 5,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgn0RXfFxsMuzq8wbnQttUPxK4msiHs0psJ9/ll0XjFhEKp3BheWxvYWTFA0F7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwOWY0NDU3N2M1YzZjMzJlY2VhZjMwNmU3NDJkYjU0M2YxMmI4OWFjODg3YjM0YTZjMjdkZmU1OTc0NWUzMTYxMTBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwOWY0NDU3N2M1YzZjMzJlY2VhZjMwNmU3NDJkYjU0M2YxMmI4OWFjODg3YjM0YTZjMjdkZmU1OTc0NWUzMTYxMTBhIiwidWlkIjoiNjM5MGQ1MzY4NTQ4NjgyNzczZGI4N2JkMGEwYjZhMTkiLCJ1c2VybmFtZSI6Implb3lnaW4ifSwibWVya2xlX3Jvb3QiOnsiY3RpbWUiOjE1MTEwNzU4NDIsImhhc2giOiJhYWI5NzZiZWRjMjZmNzZiNWUwMzU5NDlhNjA3YTVhM2Q1YjA5MzIxZmIwOWRiOTE0ODNjMzIxYzY2ZWMxZTc2NDY5MzQ2ZmJhNDYyNjM0ZTlhNDkzZDUzMWM3ZjA0MmViODIxMGM0ODY1YWVkZDhhZDgxMTE1NWEzZTQ2ZDFmNyIsImhhc2hfbWV0YSI6ImIxN2I1ZjUzNThiYTUwMTc3ZGQ4MjJhMDEzMGE0ZGU3NzcyNDg1Y2FlN2Y5ZWFkMWFkZWVhNDNkNDhlN2FkMWIiLCJzZXFubyI6MTcxOTMyMH0sInNlcnZpY2UiOnsiaG9zdG5hbWUiOiJqZW95Z2luLm9yZyIsInByb3RvY29sIjoiaHR0cDoifSwidHlwZSI6IndlYl9zZXJ2aWNlX2JpbmRpbmciLCJ2ZXJzaW9uIjoxfSwiY2xpZW50Ijp7Im5hbWUiOiJrZXliYXNlLmlvIGdvIGNsaWVudCIsInZlcnNpb24iOiIxLjAuMzQifSwiY3RpbWUiOjE1MTEwNzU4NzYsImV4cGlyZV9pbiI6NTA0NTc2MDAwLCJwcmV2IjoiNTM3ODM2ZTVhZmFlMzExZWFjZWI4MmFmYWE5OWQ0YzZjMGQzMDI1ZDVmYjQyMjNlOWEyY2FkMDMyMWVlMzYzNyIsInNlcW5vIjo1LCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQKATowyoWDmrDj00giT22Szl97vvN2eqJRQFcEv+7m4grjy/rYdwaZeWO8jr9TpeiYpGqrZ322qX6xV/CSy61Q+oc2lnX3R5cGUgpGhhc2iCpHR5cGUIpXZhbHVlxCCTHIBVEyrKWXROsL4vMby+ImJPY67l+Or9cekUziOYgKN0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jeoygin
+
+==================================================================

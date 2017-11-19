@@ -22,6 +22,10 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
+    match "keybase.txt" $ do
+        route   idRoute
+        compile copyFileCompiler
+
     match "images/**" $ do
         route   idRoute
         compile copyFileCompiler
@@ -34,7 +38,7 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
-    tags <- buildTags "posts/*" (fromCapture "tags/*")
+    tags <- buildTags "posts/*" (fromCapture "label/*")
 
     -- Match all files under posts directory and its subdirectories.
     -- Turn posts into wordpress style url: year/month/date/title/index.html
@@ -69,24 +73,10 @@ main = hakyll $ do
                     >>= loadAndApplyTemplate "templates/default.html" allCtx
                     >>= wordpressifyUrls
 
-    create ["archive/index.html"] $ do
-        route idRoute
-        compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
-            let allCtx =
-                    field "recent" (\_ -> recentPostList) <>
-                    constField "title" ("Archive") <>
-                    listField "posts" (postCtx tags) (return posts) <>
-                    defaultContext
-            makeItem ""
-                >>= loadAndApplyTemplate "templates/archive.html" allCtx
-                >>= loadAndApplyTemplate "templates/default.html" allCtx
-                >>= wordpressifyUrls
-
-    -- Tags
+    -- Labels
     tagsRules tags $ \tag pattern -> do
-        let title = "Posts tagged " ++ " &#8216;" ++ tag ++ "&#8217;"
-        route tagRoute
+        let title = "Posts with label " ++ " &#8216;" ++ tag ++ "&#8217;"
+        route labelRoute
         compile $ do
             let allCtx =
                     field "recent" (\_ -> recentPostList) <>
@@ -115,7 +105,7 @@ main = hakyll $ do
                     paginateCtx <>
                     defaultContext
             makeItem ""
-                >>= loadAndApplyTemplate "templates/archivepage.html" ctx
+                >>= loadAndApplyTemplate "templates/blogpage.html" ctx
                 >>= loadAndApplyTemplate "templates/default.html" ctx
                 >>= wordpressifyUrls
 
@@ -206,12 +196,14 @@ recentPosts = do
 --------------------------------------------------------------------------------
 wordpressRoute :: Routes
 wordpressRoute =
-    gsubRoute "(posts|pages)/" (const "") `composeRoutes`
-        gsubRoute "^[0-9]{4}-[0-9]{2}-[0-9]{2}-" (map replaceWithSlash) `composeRoutes`
-            gsubRoute "\\.[a-zA-Z]+$" (const "/index.html")
+    gsubRoute "posts/" (const "") `composeRoutes`
+        gsubRoute "pages/" (const "") `composeRoutes`
+            gsubRoute "^[0-9]{4}-[0-9]{2}-[0-9]{2}-" (map replaceWithSlash)`composeRoutes`
+                gsubRoute "\\.[a-zA-Z]+" (const "/index.html")
     where replaceWithSlash c = if c == '-' || c == '_'
                                    then '/'
                                    else c
+
 
 --------------------------------------------------------------------------------
 -- | Compiler form of 'wordpressUrls' which automatically turns index.html
@@ -247,12 +239,12 @@ feedConfiguration = FeedConfiguration
 
 
 --------------------------------------------------------------------------------
-tagRoute :: Routes
-tagRoute =
+labelRoute :: Routes
+labelRoute =
     setExtension ".html" `composeRoutes`
     gsubRoute "." adjustLink `composeRoutes`
         gsubRoute "/" (const "") `composeRoutes`
-            gsubRoute "^tags" (const "tags/") `composeRoutes`
+            gsubRoute "^label" (const "label/") `composeRoutes`
                 gsubRoute "-html" (const "/index.html")
 
 adjustLink = (filter (not . isSlash)) . (map (toLower . replaceWithDash))
@@ -281,6 +273,7 @@ teaserField = field "teaser" $ \item -> do
     compactTeaser :: String -> String
     compactTeaser =
         (replaceAll "<iframe [^>]*>" (const "")) .
+        (replaceAll "</iframe>" (const "")) .
         (replaceAll "<img [^>]*>" (const "")) .
         (replaceAll "<p>" (const "")) .
         (replaceAll "</p>" (const "")) .
@@ -310,7 +303,7 @@ teaserField = field "teaser" $ \item -> do
 -- | Pagination related functions
 --
 makeId :: PageNumber -> Identifier
-makeId pageNum = fromFilePath $ "archive/" ++ (show pageNum) ++ "/index.html"
+makeId pageNum = fromFilePath $ "blog/page/" ++ (show pageNum) ++ "/index.html"
 
 -- Run sortRecentFirst on ids, and then liftM (paginateEvery 10) into it
 grouper :: MonadMetadata m => [Identifier] -> m [[Identifier]]

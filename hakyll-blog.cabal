@@ -1,25 +1,21 @@
 name:                hakyll-blog
 version:             0.1.0.0
-synopsis:            jeoygin blog
+synopsis:            jeoygin.org blog
 description:         Please see README.md
 homepage:            http://github.com/jeoygin/hakyll-blog
 license-file:        LICENSE
 author:              Jeoygin Wang
 maintainer:          jeoygin@gmail.com
-copyright:           Copyright: (c) 2016 Jeoygin Wang
+copyright:           Copyright: (c) 2017 Jeoygin Wang
 category:            Web
 build-type:          Simple
--- extra-source-files:
-cabal-version:       >=1.22
+cabal-version:       >=1.10
+extra-source-files:  README.md
 
 executable site
-  hs-source-dirs:      .
+  hs-source-dirs:      src
   main-is:             site.hs
-  build-depends:       base,
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5,
                        hakyll,
                        pandoc
-  default-language:    Haskell2010
-
-source-repository head
-  type:     git
-  location: https://github.com/jeoygin/hakyll-blog
