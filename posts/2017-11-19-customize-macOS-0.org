@@ -1,0 +1,44 @@
+---
+title: 打造个性化macOS零
+tags:
+ - macOS
+ - customization
+ - tool
+ - workflow
+description: 打造个性化macOS零
+date: 2017-11-19 09:52:08 PST
+---
+
+博客有将近五年停止更新了，只在[[http://wiki.jeoygin.org/][Wiki]]记录些笔记，最近想为博客注入新的生命力，但一直也没想好要写点什么。工作后这几年陆陆续续在尝试一些工具，通过定制来满足笔者的需求以及简化和自动化工作流，想先写一个序列介绍笔者是如何通过组合各种APP和命令行工具《打造个性化的macOS》，也是对现状做个总结。虽然是针对macOS，但用到的有些工具是跨平台的，其它很多工具在其它操作系统（比如Linux和Windows）也可以找到对等物。两三年前笔者就想写一篇《打造个性化的ArchLinux》，但两年前换工作后渐渐发现用macOS可以少点折腾，于是就没怎么用Arch Linux了。
+
+第一篇先来讲讲这篇文章是如何诞生，具体用到的工具后续文章再作详细介绍。
+
+** 使用Hakyll生成博客
+
+[[https://jaspervdj.be/hakyll/][Hakyll]]是一个用于生成静态网站的Haskell库，与[[http://pandoc.org/][Pandoc]]集成使其可支持markdown、TeX和Emacs [[http://orgmode.org/][org-mode]]等多种格式。一年前想用org-mode格式来写博客，很幸运找到了Hakyll，也发现了支持org-mode格式的Wiki程序gitit。
+
+最近发现一年前找的Hakyll博客模板[[https://github.com/dannysu/hakyll-blog][hakyll-blog]]编译有问题，昨天花点时间更新了最新模板，并对必要的地方做了修改。为方便日后更新，在Dannysu的hakyll-blog本地git仓库上建立一个新的分支并提交所做的修改。
+
+笔者博客的git仓库是[[https://github.com/jeoygin/hakyll-blog][https://github.com/jeoygin/hakyll-blog]]，进入hakyll-blog本地仓库后，生成博客只需要执行一条命令：
+
+#+BEGIN_SRC sh
+make build
+#+END_SRC
+
+编写文章时可以启动本地服务器，有内容变更时会自动生成博客：
+
+#+BEGIN_SRC sh
+make monitor
+#+END_SRC
+
+部署生成的博客到服务器也很简单：
+
+#+BEGIN_SRC sh
+make deploy
+#+END_SRC
+
+** Emacs编写文章
+
+用Emacs org-mode记笔记或写文章很方便，除了用Hakyll生成，当然也是可以用org-mode强大的导出功能，本文源码可见[[https://github.com/jeoygin/hakyll-blog/tree/master/posts/2017-11-19-customize-macOS-0.org][2017-11-19-customize-macOS-0.org]]。
+
+源码以文章的元信息开始，这部分是用[[https://github.com/jeoygin/oh-my-elephant/blob/master/snippets/org-mode/hakyll-page-header][YAS snippet]]自动完成，输入 ~\hph+TAB~ 即可。而源码块是输入 ~<s+TAB~ 自动完成，org-mode的Babel默认支持。
