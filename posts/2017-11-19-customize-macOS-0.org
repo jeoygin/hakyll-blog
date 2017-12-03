@@ -42,3 +42,6 @@ make deploy
 用Emacs org-mode记笔记或写文章很方便，除了用Hakyll生成，当然也是可以用org-mode强大的导出功能，本文源码可见[[https://github.com/jeoygin/hakyll-blog/tree/master/posts/2017-11-19-customize-macOS-0.org][2017-11-19-customize-macOS-0.org]]。
 
 源码以文章的元信息开始，这部分是用[[https://github.com/jeoygin/oh-my-elephant/blob/master/snippets/org-mode/hakyll-page-header][YAS snippet]]自动完成，输入 ~\hph+TAB~ 即可。而源码块是输入 ~<s+TAB~ 自动完成，org-mode的Babel默认支持。
+
+** 传送门
+- [[http://wiki.jeoygin.org/macOS][macOS wiki]]

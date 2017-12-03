@@ -1,0 +1,81 @@
+---
+title: 打造个性化macOS一：搜索入口之Alfred
+tags:
+ - macOS
+ - customization
+ - tool
+ - workflow
+ - alfred
+description: 打造个性化macOS一：搜索入口之Alfred
+date: 2017-12-02 15:19:01 PST
+---
+
+如果说只能推荐一个Mac应用的话，[[https://www.alfredapp.com/][Alfred]]会是笔者的选择，它是笔者使用最频繁也是最喜欢的应用，相信大多用户使用后也可以提高效率、节省时间。
+
+** Alfred vs. Spotlight
+
+很多读者朋友可能会觉得Alfred的功能不就是应用启动和本地/web搜索，然后可能会问既然macOS已经有Spotlight了，为什么还要使用Alfred，那笔者就先来对比下这两者。Spotlight可以帮助我们快速搜索计算机上的应用和文件和显示互联网、iTunes、App Store等的搜索结果，在笔者看来，Spotlight的主要功能是搜索（应用启动也可以算是一种搜索）。
+
+相信每位读者朋友都有自己喜欢的启动/切换应用方式，笔者在几年前使用Arch Linux的时候或更多年前使用Windows就习惯于使用Application Launcher来启动/切换应用，可以减少鼠标的操作，所以使用Mac的时候很自然就用上了Spotlight。但由于搜索来源较多，所以要等几秒Spotlight才会显示搜索结果（可能笔者的MacBook Pro比较老了，性能下降了），虽然切换应用不需要等，但笔者有点强迫症，很快就通过搜索引擎找到了拥有强大定制能力的Alfred，当时免费版已经能够满足最初的需求了。
+
+PS: Spotlight在过去几年不断改进，变得更加好用了，虽然搜索响应慢，但在搜索结果中可以浏览结果条目，这是个不错的feature.
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/Ca5vbUr.png]]
+
+从上图可看出，除了File Search和Web Search，Alfred还提供了其它的功能。为了提高效率，Alfred通过关键字、快捷键和文本扩展来定制对应的功能，避免执行不必要的操作增加响应时间。比如在唤出Alfred搜索框后，可以通过如下默认关键字进行文件搜索：
+
+- *open*: 打开文件
+- *find*: 在Finder中显示文件
+- *in*: 查找包含搜索词的文件
+- *tags*: 查找加上给定tag的文件
+
+[[https://i.imgur.com/TvybfUB.png]]
+
+既然用Alfred相对更高效，那么可以关闭Spotlight吗？Alfred依赖Spotlight的索引信息，如果关闭Spotlight的索引，Alfred将不能搜索本地的文件，所以Alfred不能完全取代Spotlight。
+
+** 免费版 vs. Powerpack
+
+Alfred免费版已经提供了不错的功能如文件搜索、Web搜索、计算器、词典和体统命令等，一般公司内部各种工具如wiki、问答或代码仓库等会提供搜索功能，找到对应的搜索URL并添加一个Alfred自定义搜索，就可以快速搜索，比如Google搜索的URL是 ~http://www.google.com/search?q={query}~.
+
+如果想解锁额外的功能，需要购买Powerpack许可证，其为用户提供了灵活强大的集成和定制能力，单用户的v3许可证是19英镑，按目前汇率算大致是170RMB，不便宜，可视经济情况决定购买，毕竟免费版也可以满足日常使用了。笔者在挖掘Powerpack的高度定制能力后，发现其物超所值（笔者偏爱可高度定制的工具），而且Alfred有很好的社区和很多强有力的workflow，如果没找到满足特定需求的workflow，创建一个新的workflow也不难。
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/0Q20qtU.png]]
+
+上图是笔者最近一个月一台MacBook上Alfred的使用情况，Hotkeys使用频率最高，其次是Clipboard。Clipboard是一个好用的功能，可以自动保存复制的文本、图片或文件，方便从剪贴板历史搜索需要的内容。笔者设置在剪贴板历史的顶部显示"All Snippets"，可以粘贴一些常用的文本片段。
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/6O09rs8.png]]
+
+** Workflows
+
+通过Alfred的Powerpack和workflow，用户能够扩展并以自己的方式完成事情。以workflow替代重复的任务，从而提高效率。普通用户可以从如下链接寻找想要的workflow：
+
+- https://www.alfredapp.com/workflows/
+- http://www.packal.org/
+- https://github.com/zenorocha/alfred-workflows
+- https://github.com/derimagia/awesome-alfred-workflows
+- https://github.com/willfarrell/alfred-workflows
+- https://github.com/learn-anything/alfred-workflows
+- https://www.alfredforum.com/
+
+所谓的workflow就是工作流，通过创建一个个动作并以有向无环图的形式组织起来，提供一个输入，Alfred会完成对应工作流上的所有动作。拥有编程能力的用户可以通过编写脚本来完成其中的某些动作，支持bash、zsh、php、ruby、python、perl和osascript等语言，通过Alfred作为入口，可以完成大部分事情。从[[https://medium.com/@NikitaVoloboev/writing-alfred-workflows-in-go-2a44f62dc432][Writing Alfred Workflows in Go]]这篇文章可以看出用Go语言也是可以编写workflow的，以此类推，其它语言也是可以做到的。
+
+为了方便切换浏览器tab，最近笔者安装了一个workflow [[https://github.com/stuartcryan/rapid-browser-tabs-for-alfred][rapid-browser-tabs-for-alfred]]，优点是可以在多个浏览器之间切换tab，不足是响应没有浏览器内部安装的扩展程序切换顺畅。可见下图。
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/XMQqxws.png]]
+
+** 引用
+- [[https://www.alfredapp.com/][Alfred]]
+- [[https://www.alfredapp.com/help/troubleshooting/indexing/spotlight/][Can Alfred work without Spotlight enabled?]]
+- https://www.alfredapp.com/workflows/
+- http://www.packal.org/
+- https://github.com/zenorocha/alfred-workflows
+- https://github.com/derimagia/awesome-alfred-workflows
+- https://github.com/willfarrell/alfred-workflows
+- https://github.com/learn-anything/alfred-workflows
+- https://www.alfredforum.com/
+- https://medium.com/@NikitaVoloboev/writing-alfred-workflows-in-go-2a44f62dc432
+- https://github.com/stuartcryan/rapid-browser-tabs-for-alfred
