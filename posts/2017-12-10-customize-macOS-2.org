@@ -1,0 +1,111 @@
+---
+title: 闲话macOS二：窗口管理之Hammerspoon
+tags:
+ - macOS
+ - customization
+ - tool
+ - alfred
+description: 闲话macOS二：窗口管理之Hammerspoon
+date: 2017-12-10 08:59:11 PST
+---
+
+在使用Mac时，不知你是否有过这样的想法？
+- 让应用窗口占据半个屏幕，比如一半屏幕是浏览器，另一半屏幕是命令行终端，边看文档边部署服务
+- 外接显示器时，让窗口在屏幕之间移动
+
+加入前东家猿辅导后，平时开发主要使用macOS，在这之前，工作和个人使用主要是用Arch Linux，使用的窗口管理器是[[https://wiki.archlinux.org/index.php/i3][i3]]，它是一个平铺式窗口管理器。使用过iTerm的读者可能知道一个iTerm窗口可以开多个Tab，每个Tab可以水平或垂直切分成多个面板。类似地，i3使用Workspace（如同Desktop）来聚合窗口，每个Workspace可以通过水平或垂直切分成多个窗口。
+
+将多个窗口平铺在一个屏幕上可以减少应用切换和增强多任务工作体验，我个人比较喜欢这种方式，将macOS作为主要操作系统之后，习惯性地去搜罗窗口管理应用。目前macOS上的窗口管理应用不少，参考[[https://github.com/iCHAIT/awesome-macOS][iCHAIT/awesome-macOS]]和[[https://github.com/jaywcjlove/awesome-mac][jaywcjlove/awesome-mac]]推荐一些：
+- [[http://ianyh.com/amethyst/][Amethyst]]: 平铺式窗口管理
+- [[https://www.boastr.net/bettersnaptool/][BetterSnapTool]]: €3.49
+- [[https://github.com/koekeishiya/chunkwm][chunkwm]]: 平铺式窗口管理
+- [[http://mizage.com/divvy/][Divvy]]: $13.99
+- [[http://www.hammerspoon.org/][Hammerspoon]]: 强大的macOS自动化工具
+- [[http://magnet.crowdcafe.com/][Magnet]]: $0.99
+- [[https://manytricks.com/moom/][Moom]]: $10
+- [[https://github.com/kasper/phoenix][Phoenix]]
+- [[https://github.com/fikovnik/ShiftIt][ShiftIt]]
+- [[https://github.com/jigish/slate][Slate]]: 试图替换Divvy/SizeUp/ShiftIt，需要配置
+- [[https://www.spectacleapp.com/][Spectacle]]
+- [[https://cordlessdog.com/stay/][Stay]]: $15
+- [[http://www.irradiatedsoftware.com/sizeup/][SizeUp]]: $12.99
+
+我曾经尝试过上面的列表的差不多一半应用，最后选择了Hammerspoon：一是因为我个人偏好高度可配置的应用，Hammerspoon配置是用Lua语言编写，有编程经验的读者学习Lua相信会很快，可参考[[https://learnxinyminutes.com/docs/lua/][Learn X in Y minutes]] ；二是 Hammerspoon背后是Lua脚本引擎，可以做的事情远不止窗口管理。没有编程经验或不想折腾的读者也可以从上述列表找一个无需配置开箱即用的应用。
+
+** 安装与配置
+
+从 https://github.com/Hammerspoon/hammerspoon/releases/latest 下载Hammerspoon-x.x.x.zip，解压缩后将Hammerspoon移动到Applications，安装就完成了。
+
+我目前使用的配置可见[[https://github.com/jeoygin/awesome-hammerspoon][jeoygin/awesome-hammerspoon]]，在[[https://github.com/ashfinal/awesome-hammerspoon][ashfinal/awesome-hammerspoon]]的基础上做了如下修改：
+- 增加Main Mode，通过Main Mode进入其它Mode
+- 增加切换到特定应用的快捷键
+- 支持循环切换同个应用的不同窗口，比如打开了三个Chrome窗口，可以在这三个窗口循环切换
+
+执行以下命令下载配置：
+
+#+BEGIN_SRC sh
+git clone --depth 1 https://github.com/jeoygin/awesome-hammerspoon.git ~/.hammerspoon
+#+END_SRC
+
+重新加载配置之后，在桌面上可以看到Hammerspoon显示的日历。
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/NEO4tFU.png]]
+
+** 快捷键
+
+目前已支持以下的快捷键：
+- ⌘ +⌃ +⇧ +R: 重新加载Hammerspoon配置
+- ⌘ +⌃ +⇧ +1: 将当前窗口移动到第一个显示器
+- ⌘ +⌃ +⇧ +2: 将当前窗口移动到第二个显示器
+- ⌘ +⌃ +⇧ +3: 将当前窗口移动到第三个显示器
+- ⌘ +⌃ +⇧ +4: 将当前窗口移动到第四个显示器
+- ⌘ +⌃ +⇧ +N: 将当前窗口移动到下一个显示器
+- ⌘ +⌃ +⇧ +C: 将当前窗口置于屏幕中央
+- ⌘ +⌃ +⇧ +M: 将当前窗口最大化
+- ⌘ +⌃ +⇧ +F: 将当前窗口全屏化
+- ⌘ +⌃ +⇧ +←: 将当前窗口移动到左半个屏幕
+- ⌘ +⌃ +⇧ +→: 将当前窗口移动到右半个屏幕
+- ⌘ +⌃ +⇧ +↑: 将当前窗口移动到上半个屏幕
+- ⌘ +⌃ +⇧ +↓: 将当前窗口移动到下半个屏幕
+- ⌘ +⌃ +c: 跳转到Google Chrome窗口
+- ⌘ +⌃ +j: 跳转到IntelliJ IDEA窗口
+- ⌘ +⌃ +m: 跳转到NeteaseMusic窗口
+- ⌘ +⌃ +o: 跳转到Microsoft Outlook窗口
+- ⌘ +⌃ +t: 跳转到iTerm2窗口
+- ⌘ +⌃ +x: 跳转到WeChat窗口
+
+** 模式切换
+
+除了以上快捷键，还可以按 ~⌘  + space~ 唤出如下图所示的Main Mode来进行其它操作。
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/7t0md2N.png]]
+
+按A进入Application Mode：
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/MGBpPAd.png]]
+
+按I进入Timer Mode：
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/GChWO7o.png]]
+
+按R进入Resize Mode：
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/tK4kikK.png]]
+
+按S进入Cheatsheet Mode：
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/w9VZY31.png]]
+
+按Tab显示窗口提示：
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/Gcmi0Nf.png]]
+
+** P.S.
+工欲善其事，必先利其器，工具是为解决问题服务，勿为了工具而使用工具。

@@ -1,0 +1,110 @@
+---
+title: 申请Let's Encrypt HTTPS证书
+tags:
+ - HTTPS
+description: 申请Let's Encrypt HTTPS证书
+date: 2017-12-03 10:26:13 PST
+---
+
+[[https://letsencrypt.org/][Let’s Encrypt]]是一个免费、自动化和开放的权威机构，它是由非盈利组织[[https://letsencrypt.org/isrg/][Internet Security Research Group (ISRG，互联网安全研究小组)]]提供的一个服务。为了创建一个更加安全和保护隐私的网络，它向人们免费提供HTTPS（SSL/TLS）所需要的数字证书。Let's Encrypt受到了Mozilla、Chrome、Akamai和CISCO等的支持。
+
+本文使用一个开源工具[[https://github.com/Neilpang/acme.sh][acme.sh]]来申请证书，acme.sh是一个用Shell脚本编写的[[https://ietf-wg-acme.github.io/acme/][ACME]]（Automatic Certificate Management Environment，自动化证书管理环境）协议客户端，Let's Encrypt正是使用ACME协议进行证书签发。
+
+** 安装
+
+*安装OpenSSL:*
+
+#+BEGIN_SRC sh
+sudo apt-get install openssl
+#+END_SRC
+
+*安装acme.sh*
+
+#+BEGIN_SRC sh
+curl https://get.acme.sh | sh
+#+END_SRC
+
+** 签发证书
+
+Let's Encrypt需要验证域名，因此需要先修改Nginx配置，增加中间的 *location ^~ /.well-known/acme-challenge/* 部分。如果有多个域名的话，记得对每个域名都做修改。
+
+#+BEGIN_SRC
+server {
+    listen       80;
+    server_name  jeoygin.org;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/challenges/;
+        try_files $uri =404;
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+#+END_SRC
+
+重新加载Nginx配置，然后执行acme.sh签发证书：
+
+#+BEGIN_SRC sh
+sudo usermod -a -G www-data $USER
+sudo mkdir -m 774 /var/www/challenges
+sudo chown www-data:www-data /var/www/challenges
+sudo nginx -s reload
+
+~/.acme.sh/acme.sh --issue -d jeoygin.org -d wiki.jeoygin.org \
+  -d file.jeoygin.org -d img.jeoygin.org -w /var/www/challenges
+#+END_SRC
+
+安装证书并重新加载Nginx配置：
+
+#+BEGIN_SRC sh
+sudo mkdir -m 774 /var/www/ssl
+sudo chown -R www-data:www-data /var/www/ssl
+acme.sh --install-cert -d jeoygin.org \
+--key-file       /var/www/ssl/key.pem  \
+--fullchain-file /var/www/ssl/cert.pem \
+--reloadcmd     "service nginx force-reload"
+#+END_SRC
+
+** 配置Nginx
+
+增加Nginx SSL配置：
+
+#+BEGIN_SRC
+server {
+    listen       443 ssl;
+    server_name  jeoygin.org;
+    error_page 404  /404.html;
+
+    ssl_certificate      /var/www/ssl/cert.pem;
+    ssl_certificate_key  /var/www/ssl/key.pem;
+
+    location / {
+        root   /var/www/jeoygin.org/public_html/;
+        index  index.html index.htm;
+    }
+
+    access_log /var/log/nginx/jeoygin.org.log;
+}
+
+server {
+    listen       80;
+    server_name  jeoygin.org;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/challenges/;
+        try_files $uri =404;
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+#+END_SRC
+
+重新加载Nginx配置：
+
+#+BEGIN_SRC sh
+sudo nginx -s reload
+#+END_SRC

@@ -1,11 +1,10 @@
 ---
-title: 打造个性化macOS零
+title: 闲话macOS零
 tags:
  - macOS
  - customization
  - tool
- - workflow
-description: 打造个性化macOS零
+description: 闲话macOS零
 date: 2017-11-19 09:52:08 PST
 ---
 
@@ -45,3 +44,5 @@ make deploy
 
 ** 传送门
 - [[http://wiki.jeoygin.org/macOS][macOS wiki]]
+** P.S.
+工欲善其事，必先利其器，工具是为解决问题、做好事情服务，勿为了工具而使用工具。

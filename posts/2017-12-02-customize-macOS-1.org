@@ -1,12 +1,11 @@
 ---
-title: 打造个性化macOS一：搜索入口之Alfred
+title: 闲话macOS一：搜索入口之Alfred
 tags:
  - macOS
  - customization
  - tool
- - workflow
  - alfred
-description: 打造个性化macOS一：搜索入口之Alfred
+description: 闲话macOS一：搜索入口之Alfred
 date: 2017-12-02 15:19:01 PST
 ---
 
@@ -67,6 +66,25 @@ Alfred免费版已经提供了不错的功能如文件搜索、Web搜索、计�
 #+ATTR_HTML: :width 100%
 [[https://i.imgur.com/XMQqxws.png]]
 
+也有workflow可以切换iTerm tab: [[https://github.com/isometry/alfred-tty][alfred-tty]]。
+
+https://i.imgur.com/A9rrl36.png
+
+** 同步
+
+激活Alfred Powerpack后可以使用同步功能，可以在多台Mac同步设置、主题、Workflows和Snippets等。
+
+设置同步的步骤如下：
+- 打开Alfred Preferences并进入Advanced tab
+- 在右下角可以看到Syncing设置，点击“Set sync folder...”
+- 选择一个用于同步设置的目录（比如~/Dropbox/Alfred）并点击“Set folder and restart Alfred”
+- Alfred将会重启
+
+[[https://i.imgur.com/FlCoK8E.png]]
+
+除了Dropbox，其它网盘如iCloud、Google Drive或百度云盘也是可以用于同步的。
+需要注意的是要先在主要的Mac上设置同步，待设置同步完成后，再在其它Mac上设置同步，因为其它Mac会放弃原先的设置。
+
 ** 引用
 - [[https://www.alfredapp.com/][Alfred]]
 - [[https://www.alfredapp.com/help/troubleshooting/indexing/spotlight/][Can Alfred work without Spotlight enabled?]]
@@ -79,3 +97,5 @@ Alfred免费版已经提供了不错的功能如文件搜索、Web搜索、计�
 - https://www.alfredforum.com/
 - https://medium.com/@NikitaVoloboev/writing-alfred-workflows-in-go-2a44f62dc432
 - https://github.com/stuartcryan/rapid-browser-tabs-for-alfred
+** P.S.
+工欲善其事，必先利其器，工具是为解决问题、做好事情服务，勿为了工具而使用工具。
