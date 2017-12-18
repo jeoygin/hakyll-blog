@@ -1,0 +1,111 @@
+---
+title: 闲话macOS三：与系统深入接触之命令行
+tags:
+ - macOS
+ - customization
+ - tool
+ - shell
+ - zsh
+ - iTerm
+description: 闲话macOS三：与系统深入接触之命令行
+date: 2017-12-17 10:22:24 PST
+---
+
+大一上《计算机原理》课程就学习了[[https://zh.wikipedia.org/wiki/%25E7%2594%25A8%25E6%2588%25B7%25E7%2595%258C%25E9%259D%25A2][用户接口]]（User Interface，简称UI，亦称用户界面）是系统和用户之间进行交互和信息交换的媒介，它实现信息的内部形式与人类可以接受形式之间的转换。
+
+目前我个人对用户接口按如下分类：
+- [[https://zh.wikipedia.org/wiki/%25E5%2591%25BD%25E4%25BB%25A4%25E8%25A1%258C%25E7%2595%258C%25E9%259D%25A2][命令行接口]]（Command Line Interface，简称CLI）：是在图形用户界面得到普及之前使用最为广泛的用户界面，它通常不支持鼠标，用户通过键盘输入指令，计算机接收到指令后，予以执行。
+- [[https://zh.wikipedia.org/wiki/%25E5%25BA%2594%25E7%2594%25A8%25E7%25A8%258B%25E5%25BA%258F%25E6%258E%25A5%25E5%258F%25A3][应用程序接口]]（Application Programming Interface，简称API）：软件系统不同组成部分衔接的约定，是操作系统或软件系统提供给应用程序调用使用的代码。
+  - [[https://zh.wikipedia.org/wiki/Web%E6%9C%8D%E5%8A%A1][Web服务]]（Web Service）
+    - [[https://zh.wikipedia.org/wiki/%E5%9F%BA%E7%A4%8E%E8%A8%AD%E6%96%BD%E5%8D%B3%E6%9C%8D%E5%8B%99][基础设施即服务]]（Infrastructure as a Service，简称IAAS）
+    - [[https://zh.wikipedia.org/wiki/%E5%B9%B3%E5%8F%B0%E5%8D%B3%E6%9C%8D%E5%8A%A1][平台即服务]]（Platform as a Service，简称PAAS）
+    - [[https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E5%8D%B3%E6%9C%8D%E5%8A%A1][软件即服务]]（Software as a Service，简称SAAS）
+- [[https://zh.wikipedia.org/wiki/%25E5%259B%25BE%25E5%25BD%25A2%25E7%2594%25A8%25E6%2588%25B7%25E7%2595%258C%25E9%259D%25A2][图形用户接口]]（Graphical User Interface，简称GUI）：是指采用图形方式显示的计算机操作用户界面。与早期的命令行接口相比，图形用户接口对于用户来说更易于接受，但降低了灵活性。
+
+由于使用命令行接口需要记住不少命令，很多人会认为命令行接口没有图形用户接口操作方便。但在熟悉常用命令的前提下，使用命令行接口可以比图形用户接口更灵活和高效，同时也更节约系统资源。关于记忆命令，我的经验是先用起来再说，不断挖掘新需求和用法，用多了就记住，估计很少人把常用命令和用法记住了再开始用吧。有些命令过段时间不用就会生疏，多查查man、[[http://tldr.sh/][tldr]]和google就好。
+
+对于使用Linux的读者想必对命令行不会感到陌生，Linux操作系统的配置、软件安装、查看日志等操作若是不用命令行可能会感觉到别扭。我之前使用过的archlinux默认是没有安装桌面环境，用户按自己需要一步一步把桌面环境搭建起来。当然Windows也是支持命令行，犹记得在大一时，看一老师在Windows上娴熟地使用命令行，感觉就像是电影里的黑客，当时觉得很酷炫。大概是在大一的时候，当时加入的ACM兴趣小组与另一兴趣小组（机缘巧合，后来上研究生时与其中一位师兄同在一实验室，他教会了我很多使用Linux的经验）共用食堂二层创新基地的一房间，可能受他们影响，开始接触Linux（Fedora和Ubuntu），但仅限于在虚拟中使用，熟悉的命令也有限。研究生进入实验室后又接触了CentOS、openSUSE和debian等，慢慢地将debian作为主要操作系统。后来可能因为集成的桌面环境占用较多资源导致系统比较卡，开始物色一个轻量级的Linux发行版，很快就发现了archlinux，连续使用了多年直到两年前完全使用macOS。
+
+说了那么多有点扯远了，习惯了使用命令行接口后可能会多一个看软件系统的视角，不过在入坑前还是要先想想学习命令行是否会对工作和学习有帮助，是否会提高效率，毕竟喜欢命令行的人不占多数。
+
+** 终端
+
+macOS自带了终端应用Terminal，可用Alfred或Spotlight打开。
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/6QnWhvI.png]]
+
+由于Terminal不能左右分屏，很早我就改用iTerm了。
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/Bj0TQuo.png]]
+
+对于iTerm，我必须要做的一个设置是把Option键映射为Esc+，如果使用Terminal的话是Edit->Use Option as Meta Key，这个Meta键对于终端重度用户很重要。
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/lAldaPc.png]]
+
+** Shell
+
+搞定了终端，接下来要考虑是的使用什么Shell，Shell可以理解为一个脚本执行引擎，用户输入文本形式的命令，Shell负责解释并执行输入的命令。
+
+目前使用比较多的Shell有：
+- bash
+- zsh
+- fish
+- clink（Windows）
+
+可用以下命令查看你的系统有哪些shell：
+
+#+BEGIN_SRC sh
+$ cat /etc/shells
+/bin/bash
+/bin/csh
+/bin/ksh
+/bin/sh
+/bin/tcsh
+/bin/zsh
+#+END_SRC
+
+我最早使用的是bash，也是最熟悉的，即便现在Shell是用zsh，但写脚本还是会用bash，使用bash执行脚本文件的方法是在脚本文件头部加上：
+
+#+BEGIN_SRC sh
+#!/usr/bin/env bash
+#+END_SRC
+
+多年前参考[[http://www.tldp.org/LDP/abs/html/][Advanced Bash-Scripting Guide]]学习了bash脚本。
+
+自从看了[[http://macshuo.com/?p=676][《终极 Shell》]]一文，尝到zsh的甜头就果断改投zsh门下。设置当前用户的login shell为zsh：
+
+#+BEGIN_SRC sh
+chsh -s /bin/zsh
+#+END_SRC
+
+zsh的强大之处在于配置，不过已经有人提供了支持插件的配置框架，我们直接使用就可以了。我最早使用的是[[https://github.com/robbyrussell/oh-my-zsh][oh-my-zsh]]，配置简单，设置要使用的插件和主题就可以愉快玩耍了。那到底zsh相比bash的优势在哪呢？
+
+- 输入命令或前缀，用山下箭头翻阅命令历史
+- 智能拼写纠错
+- 补全：命令补全、命令参数补全、路径补全等
+- 目录浏览和跳转：输入d，列出在当前会话访问过的目录列表，序号即可跳转到对应的目录
+- 输入目录名即可跳转，不需输入cd命令，输入...会自动转成../..
+- 可以通过设置别名，针对文件类型设置对应的打开程序，比如 ~alias -s tgz='tar -xvf'~
+- 插件支持
+
+后来由于觉得oh-my-zsh有点重了，加载有点慢，于是改用了[[https://github.com/jeoygin/prezto][prezto]]（链接是我目前的配置）。
+
+oh-my-zsh和prezto对于插件管理做得不是特别好，于是就有了[[https://github.com/zplug/zplug][zplug]]、[[https://github.com/tarjoilija/zgen][zgen]]和[[https://github.com/zsh-users/antigen][antigen]]这类插件管理器。为了减少加载时间，目前我用zplug来安装插件，但没用它加载插件，[[https://github.com/unixorn/awesome-zsh-plugins][awesome-zsh-plugins]]这个列表汇总了一些好用常用的插件。
+
+写了这么多，最后我想给没使用过zsh的读者推荐的却是[[https://fishshell.com/][fish]]，开箱即用，自带tab自动完成和语法高亮，号称是一个智能并对用户友好的命令行Shell，你值得拥有。
+
+** 推荐列表
+
+关于常用命令和操作下篇再续，此处先献上资源。
+
+- https://github.com/jlevy/the-art-of-command-line
+- https://github.com/alebcay/awesome-shell
+- https://github.com/unixorn/awesome-zsh-plugins
+- http://www.tldp.org/LDP/abs/html/
+- https://google.github.io/styleguide/shell.xml
+
+** P.S.
+工欲善其事，必先利其器，工具是为解决问题服务，勿为了工具而使用工具。
