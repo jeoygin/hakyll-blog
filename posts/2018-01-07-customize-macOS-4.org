@@ -1,0 +1,155 @@
+---
+title: 闲话macOS四：基本命令行
+tags:
+ - macOS
+ - customization
+ - tool
+ - shell
+description: 闲话macOS四：基本命令行
+date: 2018-01-07 20:46:26 PST
+---
+
+** 基本命令
+
+- 帮助
+  - man
+    - 执行man ls可以查看ls命令的帮助文档
+- 文件管理
+  - 列举目录内容
+    - ls
+    - ls -l：显示详细信息
+  - 当前目录
+    - pwd
+    - pwdx: 进程的当前工作目录
+  - 进入目录
+    - cd
+      - cd //Users/Jeoygin/Projects/
+  - 目录栈
+    - dirs
+      - dirs -v | head -n 16
+  - 查看文件内容
+    - cat
+    - tac
+    - less
+    - head
+      - head -n 10
+      - head -n -100
+    - tail
+      - tail -n 10
+      - tail -n +100
+  - 查看文件类型
+    - file
+  - 查看二进制文件中的字符串
+    - strings
+  - 列举打开文件
+    - lsof
+      - lsof -iTCP -sTCP:LISTEN -nP
+      - lsof -i :$port -nP
+  - 链接
+    - ln
+    - ln -s: 创建软链接
+  - 权限
+    - chmod
+      - chmod u+x /path/to/file
+    - chown
+      - chown -R jeoygin:jeoygin /path/to/dir
+  - 磁盘使用情况
+    - du -sh *
+  - 文件系统
+    - df
+      - df -lh
+    - mount
+    - fdisk
+    - mkfs
+- 打印到标准输出
+  - echo
+    - echo "Hello $USER"
+- 输入/输出重定向与管道
+  - >: 将命令输出重定向，比如重定向到指定文件，会覆盖原文件内容
+    - >>: 同>，但不会覆盖原文件内容
+    - ls /path/to/somewhere > /path/to/outout 2>&1
+  - <: 输入重定向，比如将指定文件作为命令的输入
+  - ~|~: 管道，将上一条命令的输入作为下一条命令的输入，每条命令就像流水线上的工人一样只负责自己的职责
+- 进程管理
+  - ps
+    - ps -ef: 用标准的格式显示进程
+    - ps aux: 用BSD的格式显示进程
+- 文本搜索
+  - grep
+    - ps -ef | grep test
+- 任务管理
+  - &: 后台执行
+  - ctrl-z: 挂起当前进程
+  - ctrl-c: 终止当前进程
+  - jobs
+  - fg: 将挂起的进程在前台继续执行
+  - bg
+  - kill
+- 网络管理
+  - ifconfig
+  - ip
+  - netstat
+    - netstat -ntlp # Linux
+    - netstat -anp tcp | grep -i 'listen' #macOS
+  - dig
+  - nslookup
+  - traceroute
+- 其它
+  - alias
+    - alias ll='ls -latr'
+  - date
+  - history
+  - nohup
+  - xargs: 参数列表
+
+** 日常使用
+zsh和bash都支持emacs和vi模式，默认是emacs，可用以下命令更改：
+- ~set -o emacs~
+- ~set -o vi~
+
+使用命令行时我个人倾向于使用emacs模式，常用的快捷键有：
+- ctrl-r: 反向搜索命令历史，我的zsh配置支持用上下键来回查找历史，所以这个已经很少使用了
+- ctrl-w: 删除光标前一个词
+- ctrl-k: 删除光标后的内容
+- ctrl-u: 删除所有内容
+- ctrl-a: 移动光标到行首
+- ctrl-e: 移动光标到行末
+- ctrl-b: 光标向后移动一个字符
+- ctrl-f: 光标向前移动一个字符
+- ctrl-d: 删除光标后的一个字符
+- ctrl-n: 下一条命令
+- ctrl-p: 上一条命令
+- ctrl-q: 保存输入的内容，执行一条新命令
+- ctrl-l: 清除屏幕
+- ctrl-y: 粘贴
+- ctrl-_: 撤销
+- alt-.: 粘贴历史命令的最后一个参数
+- alt-<: 第一条历史命令
+- alt->: 最后一条历史命令
+- alt-b: 光标向后移动一个词
+- alt-f: 光标向前移动一个词
+- alt-d: 删除光标后的一个词
+- alt-u: 大写
+- alt-l: 小写
+- alt-t: 调换词顺序
+
+上述快捷键是由readline提供，详情可参见https://linux.die.net/man/3/readline。
+
+** 环境变量
+执行env命令可以查看当前shell的环境变量和命令别名，常用的环境变量有：
+- ~$USER~
+- ~$HOME~
+- ~$SHELL~
+- ~$LANG~
+- ~$EDITOR~
+- ~$LIBRARY_PATH~
+- ~$LD_LIBRARY_PATH~
+** 推荐列表
+- https://github.com/jlevy/the-art-of-command-line
+- https://github.com/alebcay/awesome-shell
+- https://github.com/unixorn/awesome-zsh-plugins
+- http://www.tldp.org/LDP/abs/html/
+- https://google.github.io/styleguide/shell.xml
+
+** P.S.
+工欲善其事，必先利其器，工具是为解决问题服务，勿为了工具而使用工具。
