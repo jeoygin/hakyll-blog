@@ -36,6 +36,12 @@ date: 2017-12-10 08:59:11 PST
 
 从 https://github.com/Hammerspoon/hammerspoon/releases/latest 下载Hammerspoon-x.x.x.zip，解压缩后将Hammerspoon移动到Applications，安装就完成了。
 
+因为Hammerspoon配置使用Lua语言来写，需要先安装Luz：
+
+#+BEGIN_SRC sh
+brew install lua
+#+END_SRC
+
 我目前使用的配置可见[[https://github.com/jeoygin/awesome-hammerspoon][jeoygin/awesome-hammerspoon]]，在[[https://github.com/ashfinal/awesome-hammerspoon][ashfinal/awesome-hammerspoon]]的基础上做了如下修改：
 - 增加Main Mode，通过Main Mode进入其它Mode
 - 增加切换到特定应用的快捷键
@@ -50,7 +56,7 @@ git clone --depth 1 https://github.com/jeoygin/awesome-hammerspoon.git ~/.hammer
 重新加载配置之后，在桌面上可以看到Hammerspoon显示的日历。
 
 #+ATTR_HTML: :width 100%
-[[https://i.imgur.com/NEO4tFU.png]]
+[[https://i.imgur.com/05ZFlME.png][2017-12-10-hammerspoon-desktop]]
 
 ** 快捷键
 
@@ -80,32 +86,32 @@ git clone --depth 1 https://github.com/jeoygin/awesome-hammerspoon.git ~/.hammer
 除了以上快捷键，还可以按 ~⌘  + space~ 唤出如下图所示的Main Mode来进行其它操作。
 
 #+ATTR_HTML: :width 100%
-[[https://i.imgur.com/7t0md2N.png]]
+[[https://i.imgur.com/F2yhAug.png][2017-12-10-hammerspoon-main-mode]]
 
 按A进入Application Mode：
 
 #+ATTR_HTML: :width 100%
-[[https://i.imgur.com/MGBpPAd.png]]
+[[https://i.imgur.com/79WwHvd.png][2017-12-10-hammerspoon-app-mode]]
 
 按I进入Timer Mode：
 
 #+ATTR_HTML: :width 100%
-[[https://i.imgur.com/GChWO7o.png]]
+[[https://i.imgur.com/6cTSvrE.png][2017-12-10-hammerspoon-timer-mode]]
 
 按R进入Resize Mode：
 
 #+ATTR_HTML: :width 100%
-[[https://i.imgur.com/tK4kikK.png]]
+[[https://i.imgur.com/9N2eYtJ.png][2017-12-10-hammerspoon-resize-mode]]
 
 按S进入Cheatsheet Mode：
 
 #+ATTR_HTML: :width 100%
-[[https://i.imgur.com/w9VZY31.png]]
+[[https://i.imgur.com/r1oRDoU.png][2017-12-10-hammerspoon-cheatsheet-mode]]
 
 按Tab显示窗口提示：
 
 #+ATTR_HTML: :width 100%
-[[https://i.imgur.com/Gcmi0Nf.png]]
+[[https://i.imgur.com/Gcmi0Nf.png][2017-12-10-hammerspoon-window-hint]]
 
 ** P.S.
 工欲善其事，必先利其器，工具是为解决问题服务，勿为了工具而使用工具。
