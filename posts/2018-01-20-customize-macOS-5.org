@@ -1,0 +1,343 @@
+---
+title: 闲话macOS五：实用命令行
+tags:
+ - macOS
+ - customization
+ - tool
+ - shell
+description: 闲话macOS五：实用命令行
+date: 2018-01-20 14:35:57 PST
+---
+
+本文主要介绍我在日常工作和学习中常用的命令行工具。
+
+** 包管理
+不难想象，如果没有包管理工具，安装或更新软件时需要下载安装包，然后安装或编译。目前各种Linux发行版基本自带包管理工具，当然macOS也有App Store可以安装应用，但是不能用于安装命令行工具或链接库。幸运的是有第三方工具可以编译、安装和更新命令行或图形界面开源软件，方便了macOS的用户，耳熟能详的有：
+
+- Homebrew: [[https://brew.sh/]]
+- MacPorts: [[https://www.macports.org/]]
+
+我一直在用的是Homebrew，MacPorts未曾用过，Homebrew基本可以满足大部分需求，受其启发，有热心人士开发了针对Linux系统的Linuxbrew。安装Homebrew很简单，一行命令：
+
+#+BEGIN_SRC bash
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#+END_SRC
+
+Homebrew-Cask扩展了Homebrew，可一键安装macOS应用：
+
+#+BEGIN_SRC bash
+$ brew tap caskroom/cask
+#+END_SRC
+
+本文后面提到的工具基本都可以用Homebrew安装，tldr：
+
+#+BEGIN_SRC bash
+$ brew install tldr
+#+END_SRC
+
+除了系统层面的包管理工具，各大编程语言也有语言层面的包管理工具，比如：
+
+- Node.js的npm: [[https://www.npmjs.com/]]
+- Python的pip: [[https://pip.pypa.io/en/stable/]]
+- Ruby的gem: https://rubygems.org/
+
+在语言层面，除了包管理工具，还有版本管理工具，方便在多个版本之间切换，比如：
+
+- Node.js的nvm: [[https://github.com/creationix/nvm]]
+- Python的virtualenv和virtualenvwrapper
+  - [[https://virtualenv.pypa.io/en/stable/]]
+  - [[https://virtualenvwrapper.readthedocs.io/en/latest/]]
+- Ruby的rvm: [[https://rvm.io/]]
+- JVM系列的SDKMAN: http://sdkman.io/
+
+** 辅助
+
+命令太多，记不住怎么办？其实有时会突然忘了某个命令的某种用法是常事，用man命令看文档是个好习惯，除此还可用tldr，这是由社区驱动的man页面，提供了多个命令的常见用法，可见[[https://github.com/tldr-pages/tldr/tree/master/pages/common]]。
+
+#+BEGIN_SRC bash
+$ tldr tldr
+
+tldr
+
+Simplified man pages.
+
+- Get typical usages of a command (hint: this is how you got here!):
+    tldr command
+
+- Update the local cache of tldr pages:
+    tldr --update
+#+END_SRC
+
+另外一个要推荐的工具不可说，当命令打错时，可用来纠正：
+
+#+BEGIN_SRC bash
+$ brew instlal thefuck
+Error: Unknown command: instlal
+$ fuck
+brew install thefuck [enter/↑/↓/ctrl+c]
+#+END_SRC
+
+Github仓库：
+- [[https://github.com/tldr-pages/tldr]]
+- [[https://github.com/nvbn/thefuck]]
+
+** 变量与通配符
+#+BEGIN_SRC bash
+$ cp file{,.bak} # cp file file.bak
+$ mkdir -p test-{a,b}/subtest-{1,2} # mkdir -p test-a/subtest-1 test-a/subtest-2 test-b/subtest-1 test-b/subtest-2
+$ echo {1..10}
+1 2 3 4 5 6 7 8 9 10
+$ echo ${name:?name is undefined}
+zsh: name: name is undefined
+$ echo ${name:-Jeoygin}
+Jeoygin
+$ name=test.pdf
+$ echo ${name%.pdf}
+test
+$ echo ${name#test}
+.pdf
+$ name=test.2018.pdf
+$ echo ${name%.*}
+test.2018
+$ echo ${name%%.*}
+test
+$ echo ${name#*.}
+2018.pdf
+$ echo ${name##*.}
+pdf
+#+END_SRC
+
+** GNU命令行工具
+
+macOS的有些命令行工具的用法和Linux版本有些不同（比如sed），另外，macOS原生命令的选项只能位于参数前面，而我个人一些不成熟的小习惯违背了这个约束（比如 ~rm /path/to/somewhere -rf~ ）。于是我安装了GNU命令行工具替换macOS的部分原生命令：
+
+#+BEGIN_SRC bash
+$ brew install coreutils
+$ brew install gawk
+$ brew install gnu-sed
+#+END_SRC
+
+** 搜索
+
+搜索的重要性不用多说了，能帮助我们快速找到想要的数据。
+
+*** 文件名搜索
+
+首推系统自带的find：
+
+#+BEGIN_SRC bash
+$ find /path/to/dir -iname '*.ext' # 查找指定目录下文件名后缀为.ext的文件
+#+END_SRC
+
+fd旨在替代find，更加简单、快速和用户友好：
+
+#+BEGIN_SRC bash
+$ brew install fd
+$ fd pattern /path/to/dir
+$ fd pattern # 在当前目录下查找
+$ fd '\.ext$'
+#+END_SRC
+
+Github仓库：
+- https://github.com/sharkdp/fd
+
+*** 内容搜索
+
+首推系统自带的grep：
+
+#+BEGIN_SRC bash
+$ grep -r foo .
+$ ps -ef | grep pattern | grep -v grep
+#+END_SRC
+
+四五年前开始用ack，用起来比grep简单，可忽略.gitignore中的文件，现在常用的是ag（the silver search）。还有用rust实现的rg（ripgrep），号称是速度最快。
+
+#+BEGIN_SRC bash
+$ brew install the_silver_searcher
+$ brew install ripgrep
+#+END_SRC
+
+Github仓库：
+- https://github.com/beyondgrep/ack2
+- https://github.com/ggreer/the_silver_searcher
+- https://github.com/BurntSushi/ripgrep
+
+*** 交互式过滤
+
+首先来说一下什么是交互式过滤，像上文的grep或ag等是根据给定的关键字或模式对结果进行过滤后全部输出，而交互式过滤是把备选项都列出来，根据你的输入不断减少备选项，少到一定程度就可以用光标或快捷键来选择。
+
+两三年前在Emacs社区里第一次听人说到percol，可谓是交互式过滤的先锋，其作者也开发了一些Emacs包。用过percol后对其爱不释手，但有个问题是需要依赖Python:
+
+#+BEGIN_SRC bash
+$ pip install percol
+#+END_SRC
+
+后来知道还有诸如peco、fzy和fzf这些，而Facebook的fpp（PathPicker）更专注于选择路径，可参考[[http://www.cnblogs.com/bamanzi/p/cli-narrowing-tools.html]]对比这些工具。目前我在用fzf，一是它用go实现，速度快，二是对readline和tmux支持好。
+
+#+BEGIN_SRC bash
+$ brew install fzf
+#+END_SRC
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/oYz95NK.gif][2018-01-20-fzf]]
+
+fzf自带一些使用交互式过滤的功能，比如设置快捷键和自动完成。
+
+fzf设置了如下快捷键：
+- ~CTRL-T~: 粘贴选择的文件和目录到命令行
+- ~CTRL-R~: 粘贴选择的历史命令到命令行
+- ~ALT-C~: 进入选择的目录
+
+文件和目录自动完成：
+
+#+BEGIN_SRC sh
+$ vim **<TAB>
+$ vim ../**<TAB>
+$ vim ../fzf**<TAB>
+$ vim ~/**<TAB>
+
+$ cd **<TAB>
+$ cd ~/projects/fzf**<TAB>
+#+END_SRC
+
+进程ID自动完成：
+
+#+BEGIN_SRC sh
+# 可以使用<TAB>或<Shift-TAB>选择多个进程
+$ kill -9 <TAB>
+#+END_SRC
+
+主机名自动完成：
+
+#+BEGIN_SRC sh
+$ ssh **<TAB>
+#+END_SRC
+
+环境变量/别名自动完成：
+
+#+BEGIN_SRC sh
+$ unset **<TAB>
+$ export **<TAB>
+$ unalias **<TAB>
+#+END_SRC
+
+Github仓库：
+- https://github.com/mooz/percol
+- https://github.com/peco/peco
+- https://github.com/junegunn/fzf
+- https://github.com/jhawthorn/fzy
+- https://github.com/facebook/PathPicker
+
+** 目录跳转
+
+目录间跳转是一个频繁发生的行为，有时为了方便，可能会开多个窗口或标签打开多个目录，把目录跳转问题转变成一个窗口/标签切换问题。但难免还是需要切换目录，这里主要介绍几种更快更智能切换目录的方法。
+
+zsh自带一个命令可以查看最近访问过的目录，下面的命令会列出当前会话最近访问过的30个目录：
+
+#+BEGIN_SRC bash
+$ alias ds='dirs -v | head -n 30'
+$ ds
+0	/current/dir
+1	/path/to/dir/1
+2	/path/to/dir/2
+3	/path/to/dir/3
+#+END_SRC
+
+执行 ~\cd +1~ 会进入1对应的目录，同理可将1改成其它数字，则进入该数字对应的目录。之所以用 ~\cd~ 是因为我系统上的cd是 ~__enhancd::cd~ 的别名，如果执行 ~cd +1~ 会有问题。
+
+过去几年在用autojump，autojump会记录我访问过的目录，执行 ~j foo~ 会跳转到名字包含foo的目录。
+
+最近才改用enhancd和fasd，enhancd可配置使用不同的交互式过滤器如上文提到的fzf、fzy、percol和peco等，用zplug安装比较方便，手动安装也是可以的。
+
+#+BEGIN_SRC bash
+$ git clone https://github.com/b4b4r07/enhancd
+$ source /path/to/enhancd/init.sh
+#+END_SRC
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/LlZpmtc.gif][2018-01-20-enhancd]]
+
+fasd受autojump、z和v启发，跟踪访问过的文件和目录，并对这些文件和目录按访问频率和最近访问时间进行排序，可直接用Homebrew安装：
+
+#+BEGIN_SRC bash
+$ brew install fasd
+#+END_SRC
+
+我的prezto配置加载了fasd，不需要额外安装，并且我增加了fcd函数及其tab自动完成，可见[[https://github.com/jeoygin/prezto/blob/mine/modules/fasd/init.zsh]]。
+
+#+BEGIN_SRC bash
+alias a='fasd -a'        # any
+alias s='fasd -si'       # show / search / select
+alias d='fasd -d'        # directory
+alias f='fasd -f'        # file
+alias sd='fasd -sid'     # interactive directory selection
+alias sf='fasd -sif'     # interactive file selection
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
+#+END_SRC
+
+#+ATTR_HTML: :width 100%
+[[https://i.imgur.com/Uf1vEd5.gif][2018-01-20-fasd]]
+
+Github仓库：
+- https://github.com/wting/autojump
+- https://github.com/b4b4r07/enhancd
+- https://github.com/clvv/fasd
+
+** 数据处理
+这部份的命令历史悠久，久经考验，如有兴趣，可求助man、tldr或Google。
+
+- awk
+- sed
+- cut
+- join
+- paste
+- tr
+- sort
+- uniq
+- shuf
+- wc
+- tee
+- diff
+- tar
+- zless
+- zmore
+- zcat
+- zgrep
+- gpg: 数据加密，[[https://gpgtools.org/]]
+- pandoc: 数据格式转换，[[https://pandoc.org/]]
+- macOS
+  - pbcopy: 该命令的标准输入复制剪贴板
+  - pbpaste: 输出剪贴板
+  - open: 打开文件
+
+** 数据传输
+- wget
+- curl
+- rsync: 本地或远程文件同步
+- netcat: 网络传输
+
+** 录屏
+- ttygif: [[https://github.com/icholy/ttygif]]
+- ttystudio: [[https://github.com/chjj/ttystudio]]
+- toughtty: [[https://github.com/zyrolasting/toughtty]]
+
+本文的截屏是用toughtty录的。
+
+** 系统相关
+- top: 显示进程信息
+- w: 我是谁？
+- id: 返回用户ID
+- last: 用户最近登录情况
+- time: 统计命令执行时间
+
+** 参考列表
+- https://github.com/jlevy/the-art-of-command-line
+- https://github.com/alebcay/awesome-shell
+- https://github.com/unixorn/awesome-zsh-plugins
+- http://www.tldp.org/LDP/abs/html/
+- https://google.github.io/styleguide/shell.xml
+
+** P.S.
+工欲善其事，必先利其器，工具是为解决问题服务，勿为了工具而使用工具。
+
